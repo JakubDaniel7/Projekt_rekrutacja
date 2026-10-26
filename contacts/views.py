@@ -11,6 +11,8 @@ from .csv_io import CsvImportError, export_contacts, import_contacts
 from .forms import ContactForm, CsvImportForm
 from .models import Contact, ContactStatus
 
+import json
+
 # Allowed ?sort= values: label shown in the UI and the ORDER BY fields
 SORT_OPTIONS = {
     "last_name": ("Nazwisko A–Z", ["last_name", "first_name"]),
@@ -77,6 +79,18 @@ class ContactDeleteView(SuccessMessageMixin, DeleteView):
     def get_success_message(self, cleaned_data):
         # The confirmation form has no fields, so build the message from the deleted object
         return f"Usunięto kontakt: {self.object}."
+
+    def form_valid(self, form):
+        if not self.request.headers.get("HX-Request"):
+            return super().form_valid(form)  # regular form: delete, then redirect to the list
+
+        # htmx: delete and answer with an empty body - the row is replaced by "nothing",
+        # and the HX-Trigger header makes the page show a toast (see app.js)
+        message = self.get_success_message({})
+        self.object.delete()
+        response = HttpResponse("")
+        response["HX-Trigger"] = json.dumps({"showMessage": {"text": message, "level": "success"}})
+        return response
 
 
 class ContactImportView(FormView):

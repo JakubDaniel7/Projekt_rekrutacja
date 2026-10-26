@@ -51,8 +51,27 @@
     {% include "contacts/_contact_table.html" %}
   </div>
 </div>
+
+<div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="delete-modal-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body p-4">
+        <h2 class="h5 mb-2" id="delete-modal-title">Usuń kontakt</h2>
+        <p class="mb-1" data-delete-question></p>
+        <p class="small text-body-secondary mb-0">Tej operacji nie można cofnąć.</p>
+      </div>
+      <div class="modal-footer border-0 pt-0">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Anuluj</button>
+        <button type="button" class="btn btn-danger" data-delete-confirm>
+          <i class="bi bi-trash"></i> Usuń
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
 <script src="{% static 'contacts/weather.js' %}"></script>
-{% endblock %}s
+<script src="{% static 'contacts/delete_confirm.js' %}"></script>
+{% endblock %}

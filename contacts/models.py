@@ -1,4 +1,5 @@
 import re
+import zlib
 
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -65,6 +66,15 @@ class Contact(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+    @property
+    def initials(self):
+        return f"{self.first_name[:1]}{self.last_name[:1]}".upper()
+
+    @property
+    def avatar_hue(self):
+        # A stable color for the avatar: the same e-mail always gives the same hue (0-359)
+        return zlib.crc32(self.email.encode()) % 360
 
     def clean(self):
         # Runs during form validation, before Django checks uniqueness,

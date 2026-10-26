@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_DEBUG: "1"
+      DJANGO_SECRET_KEY: "change-me-before-using-anywhere-public"
+      DJANGO_DB_PATH: /app/data/db.sqlite3
+    volumes:
+      - db-data:/app/data  # the database survives `docker compose down`
+
+volumes:
+  db-data:

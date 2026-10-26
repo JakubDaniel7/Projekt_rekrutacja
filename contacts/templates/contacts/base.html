@@ -28,26 +28,26 @@
     <div class="container">
       <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'contacts:list' %}">
         <span class="app-logo"><i class="bi-journal-bookmark-fill"></i></span>
-        Książka Telefoniczna
+        <span class="d-none d-sm-inline">Książka Telefoniczna</span>
       </a>
       <ul class="navbar-nav ms-auto align-items-center gap-1">
         <li class="nav-item">
           <a class="nav-link {% if url_name != 'dashboard' %}active{% endif %}"
              {% if url_name != 'dashboard' %}aria-current="page"{% endif %}
              href="{% url 'contacts:list' %}">
-            <i class="bi bi-people"></i><span class="d-none d-sm-inline ms-1">Kontakty</span>
+            <i class="bi bi-people"></i><span class="d-none d-md-inline ms-1">Kontakty</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link {% if url_name == 'dashboard' %}active{% endif %}"
              {% if url_name == 'dashboard' %}aria-current="page"{% endif %}
              href="{% url 'contacts:dashboard' %}">
-            <i class="bi bi-bar-chart"></i><span class="d-none d-sm-inline ms-1">Statystyki</span>
+            <i class="bi bi-bar-chart"></i><span class="d-none d-md-inline ms-1">Statystyki</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'contact-list' %}">
-            <i class="bi bi-braces"></i><span class="d-none d-sm-inline ms-1">API</span>
+            <i class="bi bi-braces"></i><span class="d-none d-md-inline ms-1">API</span>
           </a>
         </li>
         <li class="nav-item">

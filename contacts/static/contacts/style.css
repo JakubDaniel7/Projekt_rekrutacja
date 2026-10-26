@@ -131,10 +131,103 @@ h1,
 .app-navbar .nav-link {
   border-radius: 0.5rem;
   padding-inline: 0.75rem;
+  white-space: nowrap;
 }
 
 .app-navbar .nav-link.active {
   color: var(--bs-link-color);
   background: rgba(var(--app-accent-rgb), 0.1);
   font-weight: 600;
+}
+
+/* A deleted row fades out while htmx waits before removing it (hx-swap="outerHTML swap:300ms") */
+tr.htmx-swapping {
+  opacity: 0;
+  transition: opacity 300ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  tr.htmx-swapping {
+    transition: none;
+  }
+}
+
+/* Contact list */
+.contacts-table th {
+  font-weight: 600;
+}
+
+.contacts-table a:hover {
+  text-decoration: underline !important;
+}
+
+.avatar {
+  display: inline-grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: hsl(var(--hue) 55% 28%);
+  background: hsl(var(--hue) 60% 90%);
+}
+
+[data-bs-theme="dark"] .avatar {
+  color: hsl(var(--hue) 60% 85%);
+  background: hsl(var(--hue) 30% 25%);
+}
+
+/* Medium screens: the table is a bit too wide, so the least important column steps aside */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .contacts-table .col-added {
+    display: none;
+  }
+}
+
+/* Phones and tablets: every row becomes a card - the header row hides and each cell shows its own label */
+@media (max-width: 991.98px) {
+  .contacts-table thead {
+    display: none;
+  }
+
+  .contacts-table,
+  .contacts-table tbody,
+  .contacts-table tr,
+  .contacts-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .contacts-table tr {
+    position: relative;
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--bs-border-color);
+  }
+
+  .contacts-table > :not(caption) > * > * {
+    padding: 0.2rem 0;
+    border-bottom-width: 0;
+  }
+
+  .contacts-table td[data-label]::before {
+    content: attr(data-label);
+    display: inline-block;
+    width: 5.5rem;
+    color: var(--bs-secondary-color);
+    font-size: 0.875rem;
+  }
+
+  .contacts-table td:first-child {
+    padding-bottom: 0.5rem;
+    padding-right: 6rem; /* keep the name clear of the action buttons */
+  }
+
+  .contacts-table td.contact-actions {
+    position: absolute;
+    top: 0.875rem;
+    right: 1rem;
+    width: auto;
+  }
 }
