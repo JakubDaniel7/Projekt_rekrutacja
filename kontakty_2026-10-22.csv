@@ -1,0 +1,31 @@
+﻿imię;nazwisko;telefon;email;miasto;status;data dodania
+Paweł;Dąbrowski;609110210;pawel.dabrowski@example.com;Lublin;nowy;22.10.2026 21:16
+Natalia;Grabowska;616817917;natalia.grabowska@example.com;Kraków;nowy;22.10.2026 21:16
+Alicja;Górska;628229329;alicja.gorska@example.com;Kielce;nowy;22.10.2026 21:16
+Zofia;Jabłońska;622523623;zofia.jablonska@example.com;Bielsko-Biała;zagubiony;22.10.2026 21:16
+Marcin;Jankowski;611312412;marcin.jankowski@example.com;Toruń;nowy;22.10.2026 21:16
+Magdalena;Kamińska;604505605;magda.kaminska@example.com;Poznań;nowy;22.10.2026 21:16
+Piotr;Kowalski;601202302;piotr.kowalski@example.com;Kraków;w trakcie;22.10.2026 21:16
+Monika;Kozłowska;610211311;monika.kozlowska@example.com;Zakopane;w trakcie;22.10.2026 21:16
+Aleksandra;Krawczyk;614615715;ola.krawczyk@example.com;Olsztyn;nowy;22.10.2026 21:16
+Weronika;Król;620321421;weronika.krol@example.com;Warszawa;nowy;22.10.2026 21:16
+Łukasz;Kwiatkowski;613514614;lukasz.kwiatkowski@example.com;Białystok;nowy;22.10.2026 21:16
+Michał;Lewandowski;605606706;michal.lewandowski@example.com;Łódź;nieaktualny;22.10.2026 21:16
+Julia;Majewska;624725825;julia.majewska@example.com;Warszawa;w trakcie;22.10.2026 21:16
+Kamil;Malinowski;627128228;kamil.malinowski@example.com;Opole;nieaktualny;22.10.2026 21:16
+Ewa;Mazur;612413513;ewa.mazur@example.com;Rzeszów;zagubiony;22.10.2026 21:16
+Adam;Michalski;619220320;adam.michalski@example.com;Poznań;w trakcie;22.10.2026 21:16
+Anna;Nowak;600101201;anna.nowak@example.com;Warszawa;nowy;22.10.2026 21:16
+Grzegorz;Nowakowski;617918118;g.nowakowski@example.com;Gdańsk;nieaktualny;22.10.2026 21:16
+Bartosz;Olszewski;625826926;bartosz.olszewski@example.com;Gdynia;nowy;22.10.2026 21:16
+Karolina;Pawłowska;618119219;karolina.pawlowska@example.com;Wrocław;nowy;22.10.2026 21:16
+Jakub;Piotrowski;615716816;jakub.piotrowski@example.com;Warszawa;w trakcie;22.10.2026 21:16
+Wojciech;Rutkowski;629330430;wojciech.rutkowski@example.com;Wrocław;nowy;22.10.2026 21:16
+Maria;Stępień;626927127;maria.stepien@example.com;Sopot;nowy;22.10.2026 21:16
+Krzysztof;Szymański;607808908;k.szymanski@example.com;Bielsko-Biała;nowy;22.10.2026 21:16
+Mateusz;Wieczorek;621422522;mateusz.wieczorek@example.com;Katowice;nowy;22.10.2026 21:16
+Katarzyna;Wiśniewska;48602303403;k.wisniewska@example.com;Gdańsk;nowy;22.10.2026 21:16
+Joanna;Woźniak;608909109;joanna.wozniak@example.com;Szczecin;nowy;22.10.2026 21:16
+Dawid;Wróbel;623624724;dawid.wrobel@example.com;Kraków;nowy;22.10.2026 21:16
+Tomasz;Wójcik;603404504;tomasz.wojcik@example.com;Wrocław;zagubiony;22.10.2026 21:16
+Agnieszka;Zielińska;606707807;agnieszka.zielinska@example.com;Katowice;w trakcie;22.10.2026 21:16

@@ -1,0 +1,140 @@
+/*
+ * Visual identity on top of Bootstrap 5.3: one typeface (Instrument Sans),
+ * a petrol-teal accent instead of Bootstrap blue, and cool grey-green surfaces.
+ */
+:root,
+[data-bs-theme="light"] {
+  --app-accent: #0b6e69;
+  --app-accent-rgb: 11, 110, 105;
+  --app-accent-hover: #095854;
+  --app-on-accent: #ffffff;
+
+  --bs-body-font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bs-primary: var(--app-accent);
+  --bs-primary-rgb: var(--app-accent-rgb);
+  --bs-link-color: #0b6e69;
+  --bs-link-color-rgb: 11, 110, 105;
+  --bs-link-hover-color: #095854;
+  --bs-link-hover-color-rgb: 9, 88, 84;
+  --bs-body-color: #1d2624;
+  --bs-body-color-rgb: 29, 38, 36;
+  --bs-body-bg: #ffffff;
+  --bs-body-bg-rgb: 255, 255, 255;
+  --bs-tertiary-bg: #eef2f1;
+  --bs-tertiary-bg-rgb: 238, 242, 241;
+  --bs-border-color: #d9e1df;
+  --bs-focus-ring-color: rgba(11, 110, 105, 0.25);
+  --app-muted-bar: #b9c4c1; /* "other" bars in charts - visible, but clearly background */
+}
+
+[data-bs-theme="dark"] {
+  --app-accent: #1f8a80;
+  --app-accent-rgb: 31, 138, 128;
+  --app-accent-hover: #26a094;
+  --app-on-accent: #ffffff;
+
+  --bs-link-color: #6cc9bf;
+  --bs-link-color-rgb: 108, 201, 191;
+  --bs-link-hover-color: #93d9d1;
+  --bs-link-hover-color-rgb: 147, 217, 209;
+  --bs-body-color: #dfe7e5;
+  --bs-body-color-rgb: 223, 231, 229;
+  --bs-body-bg: #171d1c;
+  --bs-body-bg-rgb: 23, 29, 28;
+  --bs-tertiary-bg: #0f1413;
+  --bs-tertiary-bg-rgb: 15, 20, 19;
+  --bs-border-color: #2c3634;
+  --bs-focus-ring-color: rgba(108, 201, 191, 0.3);
+  --app-muted-bar: #46524f;
+}
+
+/* Bootstrap compiles component colors from Sass, so the accent has to be set on them explicitly */
+.btn-primary {
+  --bs-btn-color: var(--app-on-accent);
+  --bs-btn-bg: var(--app-accent);
+  --bs-btn-border-color: var(--app-accent);
+  --bs-btn-hover-color: var(--app-on-accent);
+  --bs-btn-hover-bg: var(--app-accent-hover);
+  --bs-btn-hover-border-color: var(--app-accent-hover);
+  --bs-btn-active-color: var(--app-on-accent);
+  --bs-btn-active-bg: var(--app-accent-hover);
+  --bs-btn-active-border-color: var(--app-accent-hover);
+  --bs-btn-disabled-bg: var(--app-accent);
+  --bs-btn-disabled-border-color: var(--app-accent);
+  --bs-btn-focus-shadow-rgb: var(--app-accent-rgb);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--bs-link-color);
+  --bs-btn-border-color: var(--app-accent);
+  --bs-btn-hover-color: var(--app-on-accent);
+  --bs-btn-hover-bg: var(--app-accent);
+  --bs-btn-hover-border-color: var(--app-accent);
+  --bs-btn-active-color: var(--app-on-accent);
+  --bs-btn-active-bg: var(--app-accent-hover);
+  --bs-btn-active-border-color: var(--app-accent-hover);
+  --bs-btn-focus-shadow-rgb: var(--app-accent-rgb);
+}
+
+.pagination {
+  --bs-pagination-color: var(--bs-link-color);
+  --bs-pagination-hover-color: var(--bs-link-hover-color);
+  --bs-pagination-active-bg: var(--app-accent);
+  --bs-pagination-active-border-color: var(--app-accent);
+  --bs-pagination-focus-box-shadow: 0 0 0 0.25rem var(--bs-focus-ring-color);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--app-accent);
+  box-shadow: 0 0 0 0.25rem var(--bs-focus-ring-color);
+}
+
+/* Quieter cards: a hairline border does the separating, the shadow only hints at depth */
+.card {
+  --bs-card-border-color: var(--bs-border-color);
+}
+
+.shadow-sm {
+  box-shadow: 0 1px 2px rgba(16, 28, 26, 0.05) !important;
+}
+
+h1,
+.h1,
+.h3 {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+/* Digits of equal width, so phone numbers and dates line up in columns */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Navigation */
+.app-logo {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background: var(--app-accent);
+  color: var(--app-on-accent);
+  font-size: 1rem;
+}
+
+.app-navbar .navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.app-navbar .nav-link {
+  border-radius: 0.5rem;
+  padding-inline: 0.75rem;
+}
+
+.app-navbar .nav-link.active {
+  color: var(--bs-link-color);
+  background: rgba(var(--app-accent-rgb), 0.1);
+  font-weight: 600;
+}

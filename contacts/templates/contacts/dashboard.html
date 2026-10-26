@@ -1,0 +1,76 @@
+{% extends "contacts/base.html" %}
+{% load static %}
+
+{% block title %}Statystyki{% endblock %}
+
+{% block content %}
+<h1 class="h3 mb-3">Statystyki</h1>
+
+<div class="row g-3 mb-3">
+  <div class="col-sm-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <div class="text-body-secondary small">Kontakty</div>
+        <div class="fs-2 fw-semibold">{{ total }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <div class="text-body-secondary small">Miasta</div>
+        <div class="fs-2 fw-semibold">{{ city_count }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <div class="text-body-secondary small">Dodane w ostatnich 7 dniach</div>
+        <div class="fs-2 fw-semibold">{{ added_last_week }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if total %}
+  <div class="row g-3">
+    <div class="col-lg-7">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h2 class="h6 mb-3">Kontakty według miasta</h2>
+          <div style="height: {% widthratio city_chart|length 1 36 %}px; min-height: 160px;">
+            <canvas id="city-chart" aria-label="Liczba kontaktów w poszczególnych miastach" role="img"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-5">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h2 class="h6 mb-3">Kontakty według statusu</h2>
+          <div style="height: 200px;">
+            <canvas id="status-chart" aria-label="Liczba kontaktów w poszczególnych statusach" role="img"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{ city_chart|json_script:"city-data" }}
+  {{ status_chart|json_script:"status-data" }}
+{% else %}
+  <div class="card shadow-sm">
+    <div class="card-body text-center text-body-secondary py-5">
+      Brak kontaktów. <a href="{% url 'contacts:import' %}">Zaimportuj plik CSV</a>, aby zobaczyć statystyki.
+    </div>
+  </div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{% if total %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+  <script src="{% static 'contacts/dashboard.js' %}"></script>
+{% endif %}
+{% endblock %}

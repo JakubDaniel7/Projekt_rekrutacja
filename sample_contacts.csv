@@ -1,0 +1,31 @@
+imię,nazwisko,telefon,email,miasto,status
+Anna,Nowak,600 101 201,anna.nowak@example.com,Warszawa,nowy
+Piotr,Kowalski,601-202-302,piotr.kowalski@example.com,Kraków,w trakcie
+Katarzyna,Wiśniewska,+48 602 303 403,k.wisniewska@example.com,Gdańsk,nowy
+Tomasz,Wójcik,603404504,tomasz.wojcik@example.com,Wrocław,zagubiony
+Magdalena,Kamińska,(604) 505 605,magda.kaminska@example.com,Poznań,nowy
+Michał,Lewandowski,605 606 706,michal.lewandowski@example.com,Łódź,nieaktualny
+Agnieszka,Zielińska,606 707 807,Agnieszka.Zielinska@Example.com,Katowice,w trakcie
+Krzysztof,Szymański,607 808 908,k.szymanski@example.com,Bielsko-Biała,nowy
+Joanna,Woźniak,608 909 109,joanna.wozniak@example.com,Szczecin,
+Paweł,Dąbrowski,609 110 210,pawel.dabrowski@example.com,Lublin,nowy
+Monika,Kozłowska,610 211 311,monika.kozlowska@example.com,Zakopane,w trakcie
+Marcin,Jankowski,611 312 412,marcin.jankowski@example.com,Toruń,nowy
+Ewa,Mazur,612 413 513,ewa.mazur@example.com,Rzeszów,zagubiony
+Łukasz,Kwiatkowski,613 514 614,lukasz.kwiatkowski@example.com,Białystok,nowy
+Aleksandra,Krawczyk,614 615 715,ola.krawczyk@example.com,Olsztyn,nowy
+Jakub,Piotrowski,615 716 816,jakub.piotrowski@example.com,Warszawa,w trakcie
+Natalia,Grabowska,616 817 917,natalia.grabowska@example.com,Kraków,nowy
+Grzegorz,Nowakowski,617 918 118,g.nowakowski@example.com,Gdańsk,nieaktualny
+Karolina,Pawłowska,618 119 219,karolina.pawlowska@example.com,Wrocław,nowy
+Adam,Michalski,619 220 320,adam.michalski@example.com,Poznań,w trakcie
+Weronika,Król,620 321 421,weronika.krol@example.com,Warszawa,nowy
+Mateusz,Wieczorek,621 422 522,mateusz.wieczorek@example.com,Katowice,nowy
+Zofia,Jabłońska,622 523 623,zofia.jablonska@example.com,Bielsko-Biała,zagubiony
+Dawid,Wróbel,623 624 724,dawid.wrobel@example.com,Kraków,nowy
+Julia,Majewska,624 725 825,julia.majewska@example.com,Warszawa,w trakcie
+Bartosz,Olszewski,625 826 926,bartosz.olszewski@example.com,Gdynia,nowy
+Maria,Stępień,626 927 127,maria.stepien@example.com,Sopot,nowy
+Kamil,Malinowski,627 128 228,kamil.malinowski@example.com,Opole,nieaktualny
+Alicja,Górska,628 229 329,alicja.gorska@example.com,Kielce,nowy
+Wojciech,Rutkowski,629 330 430,wojciech.rutkowski@example.com,Wrocław,nowy

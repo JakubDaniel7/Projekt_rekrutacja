@@ -1,0 +1,91 @@
+{% load static %}
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Kontakty{% endblock %} – Książka Telefoniczna</title>
+  <script>
+    // Apply the saved (or system) color theme before the page is drawn, so it does not flash
+    (function () {
+      let theme = null;
+      try { theme = localStorage.getItem("theme"); } catch (error) {}
+      if (!theme) theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.bsTheme = theme;
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="{% static 'contacts/style.css' %}">
+</head>
+<!-- htmx sends the CSRF token with every request it makes -->
+<body class="bg-body-tertiary" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+  {% with url_name=request.resolver_match.url_name %}
+  <nav class="navbar navbar-expand bg-body border-bottom mb-4 app-navbar">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'contacts:list' %}">
+        <span class="app-logo"><i class="bi-journal-bookmark-fill"></i></span>
+        Książka Telefoniczna
+      </a>
+      <ul class="navbar-nav ms-auto align-items-center gap-1">
+        <li class="nav-item">
+          <a class="nav-link {% if url_name != 'dashboard' %}active{% endif %}"
+             {% if url_name != 'dashboard' %}aria-current="page"{% endif %}
+             href="{% url 'contacts:list' %}">
+            <i class="bi bi-people"></i><span class="d-none d-sm-inline ms-1">Kontakty</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if url_name == 'dashboard' %}active{% endif %}"
+             {% if url_name == 'dashboard' %}aria-current="page"{% endif %}
+             href="{% url 'contacts:dashboard' %}">
+            <i class="bi bi-bar-chart"></i><span class="d-none d-sm-inline ms-1">Statystyki</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contact-list' %}">
+            <i class="bi bi-braces"></i><span class="d-none d-sm-inline ms-1">API</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" data-theme-toggle aria-label="Włącz ciemny motyw">
+            <i class="bi bi-moon-stars"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  {% endwith %}
+
+  <main class="container pb-5">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Toast notifications; app.js turns the Django messages below into toasts -->
+  <div id="toasts" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+  <ul id="django-messages" hidden>
+    {% for message in messages %}
+      <li data-level="{{ message.level_tag }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+  <template id="toast-template">
+    <div class="toast" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex align-items-center">
+        <div class="toast-body d-flex align-items-center gap-2">
+          <i data-toast-icon></i>
+          <span data-toast-text></span>
+        </div>
+        <button type="button" class="btn-close me-2 ms-auto" data-bs-dismiss="toast" aria-label="Zamknij"></button>
+      </div>
+    </div>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.4/dist/htmx.min.js"></script>
+  <script src="{% static 'contacts/app.js' %}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,74 @@
+<div class="table-responsive">
+  <table class="table table-hover align-middle mb-0" data-weather-url="{% url 'weather' %}">
+    <thead>
+      <tr class="small text-uppercase text-body-secondary">
+        <th>Imię i nazwisko</th>
+        <th>Telefon</th>
+        <th>E-mail</th>
+        <th>Miasto</th>
+        <th>Pogoda</th>
+        <th>Status</th>
+        <th>Data dodania</th>
+        <th class="text-end">Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for contact in contacts %}
+        <tr>
+          <td class="fw-semibold">{{ contact.first_name }} {{ contact.last_name }}</td>
+          <td class="text-nowrap">{{ contact.phone }}</td>
+          <td><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></td>
+          <td>{{ contact.city }}</td>
+          <td class="text-nowrap small" data-weather-city="{{ contact.city }}">
+            <span class="placeholder-glow"><span class="placeholder rounded" style="width: 9rem;"></span></span>
+          </td>
+          <td><span class="badge text-bg-{{ contact.status.color }}">{{ contact.status }}</span></td>
+          <td class="text-nowrap">{{ contact.created_at|date:"d.m.Y H:i" }}</td>
+          <td class="text-end text-nowrap">
+            <a href="{% url 'contacts:update' contact.pk %}" class="btn btn-sm btn-outline-primary" title="Edytuj">
+              <i class="bi bi-pencil"></i>
+            </a>
+            <a href="{% url 'contacts:delete' contact.pk %}" class="btn btn-sm btn-outline-danger" title="Usuń">
+              <i class="bi bi-trash"></i>
+            </a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="8" class="text-center text-body-secondary py-5">
+            {% if q %}Brak kontaktów pasujących do „{{ q }}”.{% else %}Brak kontaktów.{% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% if is_paginated %}
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 px-3 py-2 border-top">
+    <span class="small text-body-secondary">
+      {{ page_obj.start_index }}–{{ page_obj.end_index }} z {{ paginator.count }}
+    </span>
+    <ul class="pagination pagination-sm mb-0">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="{% querystring page=page_obj.previous_page_number %}"
+             hx-get="{% querystring page=page_obj.previous_page_number %}">
+            <i class="bi bi-chevron-left"></i>
+          </a>
+        </li>
+      {% endif %}
+      <li class="page-item active">
+        <span class="page-link">{{ page_obj.number }} / {{ paginator.num_pages }}</span>
+      </li>
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="{% querystring page=page_obj.next_page_number %}"
+             hx-get="{% querystring page=page_obj.next_page_number %}">
+            <i class="bi bi-chevron-right"></i>
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+{% endif %}

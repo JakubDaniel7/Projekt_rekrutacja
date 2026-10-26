@@ -1,0 +1,58 @@
+{% extends "contacts/base.html" %}
+{% load static %}
+
+{% block title %}Kontakty{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+  <h1 class="h3 mb-0">Kontakty</h1>
+  <div class="d-flex flex-wrap gap-2">
+    <a href="{% url 'contacts:export' %}" class="btn btn-outline-secondary">
+      <i class="bi bi-download"></i> Eksport CSV
+    </a>
+    <a href="{% url 'contacts:import' %}" class="btn btn-outline-primary">
+      <i class="bi bi-upload"></i> Import CSV
+    </a>
+    <a href="{% url 'contacts:create' %}" class="btn btn-primary">
+      <i class="bi bi-plus-lg"></i> Dodaj kontakt
+    </a>
+  </div>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-header bg-body py-3">
+    <form method="get" action="{% url 'contacts:list' %}" class="row g-2">
+      <div class="col-md-8">
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input type="search" name="q" value="{{ q }}" class="form-control"
+                 placeholder="Szukaj po imieniu, nazwisku, e-mailu, telefonie lub mieście…"
+                 hx-get="{% url 'contacts:list' %}"
+                 hx-trigger="input changed delay:300ms, search"
+                 hx-target="#contacts-table"
+                 hx-include="closest form">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <select name="sort" class="form-select" aria-label="Sortowanie"
+                hx-get="{% url 'contacts:list' %}"
+                hx-trigger="change"
+                hx-target="#contacts-table"
+                hx-include="closest form">
+          {% for value, label in sort_options.items %}
+            <option value="{{ value }}" {% if value == sort %}selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </form>
+  </div>
+
+  <div id="contacts-table" class="card-body p-0" hx-target="this">
+    {% include "contacts/_contact_table.html" %}
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'contacts/weather.js' %}"></script>
+{% endblock %}s
